@@ -2,6 +2,8 @@ import { test, type Page, expect } from "@playwright/test";
 
 test('test', async ({ page }) => {
   await page.goto('https://juanpardo.tech/');
+  //Landing Page
+  //Expect function will assert elements inside the Website
   await expect(page.getByText('AboutWorkContactJuan Pardo')).toBeVisible();
   await expect(page.getByRole('main')).toContainText('Work');
   await expect(page.locator('#zp-leG')).toContainText('About');
@@ -14,8 +16,16 @@ test('test', async ({ page }) => {
   await page.getByRole('link', { name: 'Work' }).click();
   await page.getByRole('link', { name: 'About' }).click();
   await page.getByRole('link', { name: 'Contact' }).click();
-  await page.getByRole('link', { name: 'Go to Linkedin-in page' }).click();
-  await page.getByRole('link', { name: 'Go to Github page' }).click();
-  await page.goto('https://juanpardo.tech/');
-  await page.goBack();
+  
+  //Porfolio, My Work
+  await page.goto('https://juanpardo.tech/#work');
+  await page.getByRole('link', { name: 'Work' }).click();
+  await expect(page.locator('#work')).toContainText('Portfolio');
+  await expect(page.locator('#work')).toContainText('My Work');
+  await expect(page.getByRole('link', { name: 'React JS, random gif generator' })).toBeVisible();
+  await expect(page.locator('#zpUE-p').getByRole('link')).toBeVisible();
+  await expect(page.locator('#work')).toContainText('Data Analytics, dementia dataset study');
+  await expect(page.locator('#work').getByRole('link').nth(3)).toBeVisible();
+
+  
 });
