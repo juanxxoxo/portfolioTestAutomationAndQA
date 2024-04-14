@@ -20,6 +20,8 @@ test('test', async ({ page }) => {
   //Porfolio, My Work
   await page.goto('https://juanpardo.tech/#work');
   await page.getByRole('link', { name: 'Work' }).click();
+  await expect(page.locator('#zGBh2p > a').first()).toBeVisible();
+  await expect(page.locator('#work')).toContainText('QA automation testing, personal portfolio');
   await expect(page.locator('#work')).toContainText('Portfolio');
   await expect(page.locator('#work')).toContainText('My Work');
   await expect(page.getByRole('link', { name: 'React JS, random gif generator' })).toBeVisible();
