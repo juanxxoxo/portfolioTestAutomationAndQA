@@ -29,5 +29,8 @@ test('test', async ({ page }) => {
   await expect(page.locator('#work')).toContainText('Data Analytics, dementia dataset study');
   await expect(page.locator('#work').getByRole('link').nth(3)).toBeVisible();
 
-  
+  //About Me
+  await expect(page.locator('#about')).toContainText('Portfolio');
+  await expect(page.locator('#about')).toContainText('About Me');
+  await expect(page.getByText('About MeI\'m a passionate and')).toBeVisible();   
 });
