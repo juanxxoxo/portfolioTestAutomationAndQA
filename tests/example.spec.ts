@@ -32,5 +32,17 @@ test('test', async ({ page }) => {
   //About Me
   await expect(page.locator('#about')).toContainText('Portfolio');
   await expect(page.locator('#about')).toContainText('About Me');
-  await expect(page.getByText('About MeI\'m a passionate and')).toBeVisible();   
+  await expect(page.getByText('About MeI\'m a passionate and')).toBeVisible();
+  
+  //Skills
+  await expect(page.locator('#skills')).toContainText('Skills');
+  await expect(page.getByRole('heading', { name: 'React JS', exact: true }).locator('span')).toBeVisible();
+  await expect(page.getByText('Typescript', { exact: true })).toBeVisible();
+  await expect(page.getByText('Javascript')).toBeVisible();
+  await expect(page.getByText('Angular')).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'SQL' }).locator('span')).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Python' }).locator('span')).toBeVisible();
+  await expect(page.getByText('C#')).toBeVisible();
+  await expect(page.getByText('Java', { exact: true })).toBeVisible();
+  await expect(page.getByText('HTML/CSS')).toBeVisible();
 });
