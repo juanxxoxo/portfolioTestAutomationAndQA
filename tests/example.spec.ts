@@ -45,4 +45,15 @@ test('test', async ({ page }) => {
   await expect(page.getByText('C#')).toBeVisible();
   await expect(page.getByText('Java', { exact: true })).toBeVisible();
   await expect(page.getByText('HTML/CSS')).toBeVisible();
+
+  //Contact Form
+  await expect(page.locator('#contact')).toContainText('Let\'s connect!');
+  await expect(page.locator('#contact')).toContainText('Do not hesitate to contact me with any questions or to say a few nice words... or mean ones. Freedom of speech, and what not!.');
+  await expect(page.locator('form[name="Contact form"]')).toContainText('Name');
+  await expect(page.getByPlaceholder('Your name')).toBeVisible();
+  await expect(page.locator('form[name="Contact form"]')).toContainText('Your email*');
+  await expect(page.getByPlaceholder('Your email address')).toBeVisible();
+  await expect(page.locator('form[name="Contact form"]')).toContainText('Message*');
+  await expect(page.getByPlaceholder('Enter your message')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Submit' })).toBeVisible();
 });
